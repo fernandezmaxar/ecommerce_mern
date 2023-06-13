@@ -1,0 +1,1 @@
+Aquí desarrollaré la app E-commerce utilizando Stack MERN
