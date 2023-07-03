@@ -16,6 +16,11 @@ async function addProduct (req, res) {
             description
         })
 
+        if (req.file) {
+            const { filename } = req.file
+            product.setImgUrl(filename)
+        }
+
         const producStored = await product.save()
 
         res.status(201).send({ producStored })
@@ -24,6 +29,12 @@ async function addProduct (req, res) {
     }
 }
 
+async function getProducts (req, res){
+    const products = await Product.find().lean().exec()
+    res.status(200).send({ products })
+}
+
 module.exports = {
-    addProduct
+    addProduct,
+    getProducts
 }
